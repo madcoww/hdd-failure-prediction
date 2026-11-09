@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>디스크 수명 관리 · 체험판</title>
+<meta name="description" content="데이터센터 HDD 고장 예측·교체 지원 서비스 클릭형 프로토타입 (예시 데이터)">
+<meta name="theme-color" content="#0F182A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#/dashboard"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/></svg></i>디스크 수명 관리</a>
+  <nav class="tabs" aria-label="메뉴">
+    <a class="tab" data-tab="dashboard" href="#/dashboard">대시보드</a>
+    <a class="tab" data-tab="disk" href="#/disk">디스크 상세</a>
+    <a class="tab" data-tab="replace" href="#/replace">교체 목록</a>
+  </nav>
+  <div class="right">
+    <div class="date">기준일<b class="num" id="baseDate"></b></div>
+    <button class="reset" id="resetBtn" type="button" aria-label="체험 처음부터 다시"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>초기화</button>
+  </div>
+</header>
+<div class="guide" id="guide" aria-live="polite"></div>
+<main id="app"></main>
+<div class="foot">체험용 프로토타입 · 수치·시리얼·Vault 번호는 가상 · 위험 = 30일 고장 위험 상위 1%, 주의 = 상위 1~5% (예시 기준) · 랙 배치는 도식</div>
+<nav class="mtab" aria-label="모바일 메뉴">
+  <a data-tab="dashboard" href="#/dashboard"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>대시보드</a>
+  <a data-tab="disk" href="#/disk"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>디스크 상세</a>
+  <a data-tab="replace" href="#/replace"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>교체 목록</a>
+</nav>
+<div id="layer"></div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
