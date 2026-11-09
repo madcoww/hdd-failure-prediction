@@ -1,0 +1,65 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=block"><style>
+:root{--steel:#E6E9ED;--panel:#F7F8FA;--ink:#1C2430;--sub:#5E6875;--rule:#CDD3DA;
+--red:#C8202B;--amber:#E39A12;--ok:#9DB3A6;--ok-d:#7F978A;--blue:#2F5D8A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:700px;background:var(--steel);color:var(--ink);
+font-family:'IBM Plex Sans KR','Malgun Gothic',sans-serif;font-size:14px;display:flex;overflow:hidden}
+.num{font-family:'Barlow Condensed','IBM Plex Sans KR',sans-serif;font-weight:600;letter-spacing:.2px}
+/* 왼쪽 메뉴 */
+.rail{width:168px;background:var(--panel);border-right:1px solid var(--rule);padding:22px 0;display:flex;flex-direction:column}
+.brand{padding:0 20px 22px;font-weight:700;font-size:15px;line-height:1.35}
+.brand small{display:block;font-weight:400;font-size:12px;color:var(--sub);margin-top:2px}
+.menu a{display:block;padding:10px 20px;color:var(--sub);text-decoration:none;font-size:14px;border-left:4px solid transparent}
+.menu a.on{color:var(--ink);font-weight:700;border-left-color:var(--red);background:#EEF0F3}
+.menu a.later{color:#9AA3AE}
+.rail .mock{margin-top:auto;padding:0 20px;font-size:11.5px;color:#8C95A1;line-height:1.5}
+/* 본문 */
+main{flex:1;padding:22px 26px;position:relative}
+h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.head .ctx{color:var(--sub);font-size:13.5px}
+.chip{border:1px solid var(--rule);background:var(--panel);border-radius:4px;padding:5px 10px;font-size:13px}
+.btn{display:inline-block;border-radius:4px;padding:8px 14px;font-weight:600;font-size:13.5px;border:1px solid var(--ink)}
+.btn.go{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent}
+.btn.sm{padding:4px 10px;font-size:12.5px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px}
+.foot{position:absolute;left:26px;bottom:12px;font-size:11.5px;color:#8C95A1}
+/* 자산 라벨 */
+.tag{display:inline-flex;align-items:stretch;border:2px solid var(--ink);border-radius:4px;background:#fff;overflow:hidden}
+.tag span{padding:4px 10px;border-right:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center}
+.tag span:last-child{border-right:none;background:var(--red);color:#fff}
+.tag i{font-style:normal;font-size:10.5px;color:var(--sub);line-height:1.2}
+.tag span:last-child i{color:#ffd9dc}
+.tag b{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;line-height:1.05}
+.tag.small b{font-size:16px}.tag.small span{padding:2px 7px}
+/* 디스크 칸 */
+.d{border-radius:1.5px;background:var(--ok)}
+.d.w{background:var(--amber)}.d.r{background:var(--red)}
+</style></head><body><nav class="rail"><div class="brand">HDD 수명 예측<small>교체 지원</small></div><div class="menu"><a class="">대시보드</a><a class="on">디스크 상세</a><a class="">교체 목록</a><a class="">모델 비교</a><a class="later">알림 (검토 중)</a></div><div class="mock">목업 화면<br>수치는 가상</div></nav><main>
+<div class="head"><h1>디스크 상세</h1>
+ <span class="chip" style="margin-left:auto;width:220px;color:#8C95A1">시리얼 번호로 찾기</span><span class="btn go sm">찾기</span></div>
+<div style="display:flex;gap:16px;align-items:stretch">
+ <div class="panel" style="flex:1;padding:16px 18px;display:flex;gap:26px;align-items:center">
+  <div class="tag"><span><i>데이터센터</i><b>sac2</b></span><span><i>Vault</i><b>1xxx</b></span><span><i>Pod</i><b>03</b></span><span><i>슬롯</i><b>17</b></span></div>
+  <div style="font-size:13.5px;line-height:1.8"><span style="color:var(--sub)">시리얼</span> ZJV0****1<br>
+   <span style="color:var(--sub)">모델</span> ST12000NM0008<br><span style="color:var(--sub)">가동</span> 3.2년, 최근 온도 31℃</div>
+ </div>
+ <div class="panel" style="width:300px;padding:16px 18px;border-left:6px solid var(--red)">
+  <div style="font-size:13px;color:var(--sub)">30일 안에 고장 날 위험</div>
+  <div style="display:flex;align-items:baseline;gap:10px"><b class="num" style="font-size:44px;color:var(--red);line-height:1.1">0.93</b>
+   <span style="font-weight:700;color:var(--red)">위험</span></div>
+  <div style="font-size:13.5px">예측 잔여수명 <b class="num" style="font-size:18px">4일</b></div>
+ </div>
+</div>
+<div style="display:flex;gap:16px;margin-top:16px">
+ <div style="flex:1">
+  <div style="display:flex;align-items:baseline;margin-bottom:8px"><b>SMART 기록, 최근 30일</b>
+   <span style="margin-left:auto;font-size:12.5px"><b>30일</b> <span style="color:var(--sub)">60일 90일</span></span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="panel" style="padding:10px 12px"><div style="display:flex;font-size:13px"><span>197 대기 섹터</span><b class="num" style="margin-left:auto;font-size:17px;color:var(--red)">42</b></div><svg width="270" height="96" style="margin-top:4px"><polyline points="0,93 9,93 19,93 28,93 37,93 47,93 56,93 65,93 74,93 84,93 93,93 102,93 112,93 121,93 130,93 140,93 149,93 158,93 168,93 177,93 186,93 196,93 205,93 214,80 223,67 233,54 242,42 251,29 261,16 270,3" fill="none" stroke="var(--red)" stroke-width="2"/></svg></div><div class="panel" style="padding:10px 12px"><div style="display:flex;font-size:13px"><span>187 복구 불가 오류</span><b class="num" style="margin-left:auto;font-size:17px;color:var(--red)">22</b></div><svg width="270" height="96" style="margin-top:4px"><polyline points="0,93 9,93 19,93 28,93 37,93 47,93 56,93 65,93 74,93 84,93 93,93 102,93 112,93 121,93 130,93 140,93 149,93 158,93 168,93 177,85 186,77 196,68 205,60 214,52 223,44 233,36 242,28 251,19 261,11 270,3" fill="none" stroke="var(--red)" stroke-width="2"/></svg></div><div class="panel" style="padding:10px 12px"><div style="display:flex;font-size:13px"><span>5 재할당 섹터</span><b class="num" style="margin-left:auto;font-size:17px;color:var(--amber)">30</b></div><svg width="270" height="96" style="margin-top:4px"><polyline points="0,69 9,69 19,69 28,69 37,69 47,69 56,63 65,63 74,63 84,63 93,63 102,63 112,57 121,57 130,57 140,57 149,57 158,57 168,51 177,51 186,51 196,51 205,51 214,51 223,45 233,3 242,3 251,3 261,3 270,3" fill="none" stroke="var(--amber)" stroke-width="2"/></svg></div><div class="panel" style="padding:10px 12px"><div style="display:flex;font-size:13px"><span>188 명령 시간 초과</span><b class="num" style="margin-left:auto;font-size:17px;color:var(--ok-d)">0</b></div><svg width="270" height="96" style="margin-top:4px"><polyline points="0,93 9,93 19,93 28,93 37,93 47,93 56,93 65,93 74,93 84,93 93,93 102,93 112,93 121,93 130,93 140,93 149,93 158,93 168,93 177,93 186,93 196,93 205,93 214,93 223,93 233,93 242,93 251,93 261,93 270,93" fill="none" stroke="var(--ok-d)" stroke-width="2"/></svg></div></div>
+ </div>
+ <div class="panel" style="width:330px;padding:14px 16px">
+  <b>왜 위험한가</b><div style="font-size:12px;color:var(--sub);margin:2px 0 6px">예측에 영향을 준 항목 (SHAP 상위 5개)</div><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div style="width:128px;font-size:13px">197 대기 섹터</div><div style="width:124px"><div style="height:12px;width:118px;background:var(--red);border-radius:1px"></div></div><span style="font-size:12px;color:var(--sub);white-space:nowrap">위험을 올림</span></div><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div style="width:128px;font-size:13px">187 복구 불가 오류</div><div style="width:124px"><div style="height:12px;width:88px;background:var(--red);border-radius:1px"></div></div><span style="font-size:12px;color:var(--sub);white-space:nowrap">위험을 올림</span></div><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div style="width:128px;font-size:13px">5 재할당 섹터</div><div style="width:124px"><div style="height:12px;width:60px;background:var(--red);border-radius:1px"></div></div><span style="font-size:12px;color:var(--sub);white-space:nowrap">위험을 올림</span></div><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div style="width:128px;font-size:13px">9 가동 시간</div><div style="width:124px"><div style="height:12px;width:30px;background:var(--red);border-radius:1px"></div></div><span style="font-size:12px;color:var(--sub);white-space:nowrap">위험을 올림</span></div><div style="display:flex;align-items:center;gap:10px;margin:8px 0"><div style="width:128px;font-size:13px">194 온도</div><div style="width:124px"><div style="height:12px;width:22px;background:var(--ok-d);border-radius:1px"></div></div><span style="font-size:12px;color:var(--sub);white-space:nowrap">위험을 낮춤</span></div>
+  <div style="margin-top:16px"><span class="btn go">교체 후보에 추가</span></div>
+ </div>
+</div><div class="foot">위험 = 30일 고장 위험 상위 1%, 주의 = 상위 1~5% (팀 기준, 확정 전)</div></main></body></html>

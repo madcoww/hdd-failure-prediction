@@ -1,0 +1,95 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><style>
+:root{--ink:#18181B;--sub:#71717A;--mute:#A1A1AA;--line:#ECECF0;--soft:#F7F7F9;
+--vio:#7C3AED;--vio-s:#F3EEFF;--red:#EF4444;--red-s:#FEF1F1;--amb:#F59E0B;--amb-s:#FFF6E5;--ok:#E4E4E9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;font-family:'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif;color:var(--ink);
+font-size:14px;letter-spacing:-.1px;overflow:hidden;
+background:radial-gradient(900px 600px at 0% 0%,#E9E3FF 0%,transparent 60%),
+radial-gradient(800px 600px at 100% 0%,#FFE4F1 0%,transparent 55%),
+radial-gradient(900px 700px at 60% 100%,#E2E8FF 0%,transparent 60%),#F4F2FA}
+.win{position:absolute;left:40px;top:34px;width:1360px;height:816px;background:#fff;border-radius:16px;
+box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 30px 70px -20px rgba(40,20,90,.28),0 0 0 1px rgba(20,10,60,.06);
+display:flex;flex-direction:column;overflow:hidden}
+.bar{height:52px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--line);gap:16px}
+.dots span{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px}
+.search{margin:0 auto;width:380px;height:32px;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;
+gap:8px;padding:0 10px;color:var(--mute);font-size:13px}
+.kbd{margin-left:auto;border:1px solid var(--line);border-radius:5px;padding:0 5px;font-size:11px}
+.body{flex:1;display:flex;min-height:0}
+.side{width:228px;border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:2px}
+.me{display:flex;align-items:center;gap:10px;padding:4px 8px 16px}
+.av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#C4B5FD,#F9A8D4);display:flex;
+align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px}
+.me b{font-size:14px}.me small{display:block;font-size:11.5px;color:var(--sub);background:var(--soft);
+border-radius:5px;padding:1px 6px;margin-top:2px;width:max-content}
+.grp{font-size:11.5px;color:var(--mute);padding:14px 10px 6px;border-top:1px dashed var(--line);margin-top:8px}
+.nav{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:#3F3F46;font-size:14px}
+.nav.on{background:var(--soft);color:var(--ink);font-weight:600;box-shadow:0 0 0 1px var(--line) inset}
+.nav.dim{color:var(--mute)}
+.nav svg{color:#71717A}
+main{flex:1;padding:22px 26px;min-width:0;position:relative;background:#FCFCFD}
+.hd{display:flex;align-items:flex-end;margin-bottom:18px}
+.hd h1{font-size:24px;font-weight:700;letter-spacing:-.5px}
+.hd p{color:var(--sub);font-size:13.5px;margin-top:3px}
+.hd .act{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 13px;border-radius:9px;font-weight:600;font-size:13.5px;
+border:1px solid var(--line);background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.btn.pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.sm{height:28px;padding:0 10px;font-size:12.5px;border-radius:7px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(16,16,32,.04)}
+.ct{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);font-weight:600}
+.chipi{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.pill{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:600;
+background:var(--soft);color:var(--sub);border:1px solid var(--line)}
+.pill.r{background:var(--red-s);color:#DC2626;border-color:#FBD5D5}
+.pill.a{background:var(--amb-s);color:#B45309;border-color:#FBE3B4}
+.pill.v{background:var(--vio-s);color:var(--vio);border-color:#E4D8FF}
+.big{font-size:34px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.tick{display:flex;gap:2px;height:22px}.tick i{flex:1;border-radius:2px;background:#E9E9EE}
+.c{border-radius:3px;background:var(--ok)}.c.a{background:var(--amb)}.c.r{background:var(--red)}
+.loc{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.loc span{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-size:12.5px}
+.loc span.k{background:var(--red-s);border-color:#FBD5D5;color:#DC2626}
+.note{position:absolute;left:44px;bottom:16px;font-size:12px;color:#7C7896}
+table{border-collapse:collapse;width:100%}
+th{font-size:12.5px;color:var(--sub);font-weight:500;text-align:left;padding:10px 14px;background:var(--soft);border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+</style></head><body>
+<div class="win">
+ <div class="bar"><div class="dots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div>
+  <div class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>시리얼 번호나 위치로 찾기<span class="kbd">Ctrl K</span></div>
+  <div style="width:80px"></div></div>
+ <div class="body">
+  <aside class="side">
+   <div class="me"><div class="av">운</div><div><b>운영 담당자</b><small>sac2 데이터센터</small></div></div>
+   <div class="nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>대시보드</div><div class="nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/></svg>디스크 상세</div><div class="nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4M3 7l2 2 4-4M13 6h8M13 12h8M13 18h8"/></svg>교체 목록</div><div class="nav on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M18 17V9M13 17V5M8 17v-3"/></svg>모델 비교</div>
+   <div class="grp">설정</div>
+   <div class="nav dim"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>알림 (검토 중)</div>
+   <div style="margin-top:auto" class="card"><div style="padding:12px;font-size:12px;color:var(--sub);line-height:1.55">
+    <b style="color:var(--ink);font-size:12.5px">기준 데이터</b><br>2026년 6월 30일까지<br>Backblaze 공개 데이터</div></div>
+  </aside>
+  <main>
+<div class="hd"><div><h1>모델 비교</h1><p>같은 시험 기간, 같은 수의 고장을 잡는다고 할 때</p></div>
+ <div class="act"><span class="pill">결과 나오면 채움</span></div></div>
+<div style="display:flex;gap:14px">
+ <div style="width:470px;display:flex;flex-direction:column;gap:14px">
+  <div class="card" style="overflow:hidden"><table>
+   <tr><th>방식</th><th>경보 정밀도</th><th>AP</th><th>잡은 고장</th></tr>
+   <tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#A1A1AA;margin-right:8px"></span>SMART 규칙 (기준)</td><td>--%</td><td>--</td><td>-- / --</td></tr>
+   <tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#7C3AED;margin-right:8px"></span><b>머신러닝 모델</b></td><td>--%</td><td>--</td><td>-- / --</td></tr>
+   <tr style="border:none"><td style="border:none"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#2563EB;margin-right:8px"></span><b>딥러닝 모델</b></td><td style="border:none">--%</td><td style="border:none">--</td><td style="border:none">-- / --</td></tr>
+  </table></div>
+  <div class="card" style="padding:16px">
+   <b>디스크 1개 가격</b><div style="font-size:12.5px;color:var(--sub);margin:3px 0 10px">바꾸면 절감액을 다시 계산합니다</div>
+   <div style="display:flex;gap:8px"><div style="flex:1;height:34px;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;padding:0 12px">364,550<span style="margin-left:auto;color:var(--sub)">원</span></div>
+    <span class="btn pri">다시 계산</span></div>
+  </div>
+ </div>
+ <div class="card" style="flex:1">
+  <div class="ct"><div class="chipi" style="background:var(--vio-s)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M18 17V9M13 17V5M8 17v-3"/></svg></div>
+   <div>1년 동안 바꿔야 하는 디스크 수<div style="font-size:12px;color:var(--sub);font-weight:400">실험 결과가 나오면 막대 높이와 절감액을 채웁니다</div></div></div>
+  <div style="display:flex;height:410px;align-items:flex-end;padding:0 20px 18px"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px"><span class="pill">--개 · --원</span><div style="width:96px;height:300px;border-radius:10px 10px 4px 4px;border:1.5px dashed #A1A1AA;background:repeating-linear-gradient(135deg,#F4F4F5 0 8px,transparent 8px 16px)"></div><b style="font-size:13.5px">SMART 규칙</b></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px"><span class="pill">--개 · --원</span><div style="width:96px;height:300px;border-radius:10px 10px 4px 4px;border:1.5px dashed #7C3AED;background:repeating-linear-gradient(135deg,#F3EEFF 0 8px,transparent 8px 16px)"></div><b style="font-size:13.5px">머신러닝 모델</b></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px"><span class="pill">--개 · --원</span><div style="width:96px;height:300px;border-radius:10px 10px 4px 4px;border:1.5px dashed #2563EB;background:repeating-linear-gradient(135deg,#EEF3FF 0 8px,transparent 8px 16px)"></div><b style="font-size:13.5px">딥러닝 모델</b></div></div>
+ </div>
+</div></main>
+ </div>
+</div><div class="note">목업 화면 · 성능 수치는 모델 확정 후 채움 · 모델 종류도 확정 전이라 머신러닝·딥러닝 모델로 표시</div></body></html>

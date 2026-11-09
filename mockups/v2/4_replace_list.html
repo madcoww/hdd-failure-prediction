@@ -1,0 +1,59 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=block"><style>
+:root{--steel:#E6E9ED;--panel:#F7F8FA;--ink:#1C2430;--sub:#5E6875;--rule:#CDD3DA;
+--red:#C8202B;--amber:#E39A12;--ok:#9DB3A6;--ok-d:#7F978A;--blue:#2F5D8A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:700px;background:var(--steel);color:var(--ink);
+font-family:'IBM Plex Sans KR','Malgun Gothic',sans-serif;font-size:14px;display:flex;overflow:hidden}
+.num{font-family:'Barlow Condensed','IBM Plex Sans KR',sans-serif;font-weight:600;letter-spacing:.2px}
+/* 왼쪽 메뉴 */
+.rail{width:168px;background:var(--panel);border-right:1px solid var(--rule);padding:22px 0;display:flex;flex-direction:column}
+.brand{padding:0 20px 22px;font-weight:700;font-size:15px;line-height:1.35}
+.brand small{display:block;font-weight:400;font-size:12px;color:var(--sub);margin-top:2px}
+.menu a{display:block;padding:10px 20px;color:var(--sub);text-decoration:none;font-size:14px;border-left:4px solid transparent}
+.menu a.on{color:var(--ink);font-weight:700;border-left-color:var(--red);background:#EEF0F3}
+.menu a.later{color:#9AA3AE}
+.rail .mock{margin-top:auto;padding:0 20px;font-size:11.5px;color:#8C95A1;line-height:1.5}
+/* 본문 */
+main{flex:1;padding:22px 26px;position:relative}
+h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.head .ctx{color:var(--sub);font-size:13.5px}
+.chip{border:1px solid var(--rule);background:var(--panel);border-radius:4px;padding:5px 10px;font-size:13px}
+.btn{display:inline-block;border-radius:4px;padding:8px 14px;font-weight:600;font-size:13.5px;border:1px solid var(--ink)}
+.btn.go{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent}
+.btn.sm{padding:4px 10px;font-size:12.5px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px}
+.foot{position:absolute;left:26px;bottom:12px;font-size:11.5px;color:#8C95A1}
+/* 자산 라벨 */
+.tag{display:inline-flex;align-items:stretch;border:2px solid var(--ink);border-radius:4px;background:#fff;overflow:hidden}
+.tag span{padding:4px 10px;border-right:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center}
+.tag span:last-child{border-right:none;background:var(--red);color:#fff}
+.tag i{font-style:normal;font-size:10.5px;color:var(--sub);line-height:1.2}
+.tag span:last-child i{color:#ffd9dc}
+.tag b{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;line-height:1.05}
+.tag.small b{font-size:16px}.tag.small span{padding:2px 7px}
+/* 디스크 칸 */
+.d{border-radius:1.5px;background:var(--ok)}
+.d.w{background:var(--amber)}.d.r{background:var(--red)}
+</style></head><body><nav class="rail"><div class="brand">HDD 수명 예측<small>교체 지원</small></div><div class="menu"><a class="">대시보드</a><a class="">디스크 상세</a><a class="on">교체 목록</a><a class="">모델 비교</a><a class="later">알림 (검토 중)</a></div><div class="mock">목업 화면<br>수치는 가상</div></nav><main>
+<div class="head"><h1>교체 목록</h1><span class="ctx">위험 점수가 높은 순서</span>
+ <span style="margin-left:auto;display:flex;gap:8px"><span class="btn ghost sm">처리 이력</span><span class="btn ghost sm">CSV로 내려받기</span></span></div>
+<div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+ <span class="chip">등급: 전체</span><span class="chip">위치: 전체</span>
+ <span style="margin-left:18px;font-size:13.5px">교체 후보 기준</span>
+ <div style="width:180px;height:4px;background:var(--rule);position:relative;border-radius:2px">
+  <div style="position:absolute;left:0;width:18px;height:4px;background:var(--ink)"></div>
+  <div style="position:absolute;left:12px;top:-6px;width:16px;height:16px;border-radius:50%;background:var(--ink)"></div></div>
+ <b style="font-size:13.5px">위험 상위 1%</b>
+</div>
+<div class="panel" style="overflow:hidden"><table style="border-collapse:collapse;width:100%;font-size:13.5px">
+<tr style="color:var(--sub);font-size:12.5px;text-align:left">
+ <th style="padding:9px 14px;font-weight:500">위치 (데이터센터, Vault, Pod, 슬롯)</th><th style="font-weight:500">시리얼</th>
+ <th style="font-weight:500">위험 점수</th><th style="font-weight:500">잔여수명</th><th style="font-weight:500">주요 원인</th>
+ <th style="font-weight:500">상태</th><th></th></tr><tr style="border-top:1px solid var(--rule);"><td style="padding:9px 10px;border-left:4px solid var(--red)"><div class="tag small"><span><i></i><b>sac2</b></span><span><i></i><b>1xxx</b></span><span><i></i><b>P03</b></span><span style="background:var(--red)"><i></i><b>S17</b></span></div></td><td>ZJV0****1</td><td><b class="num" style="font-size:18px;color:var(--red)">0.93</b></td><td class="num" style="font-size:16px">4일</td><td>197 대기 섹터 급증</td><td style="color:var(--sub)">승인 대기</td><td style="text-align:right;padding-right:12px"><span class="btn go sm">승인</span> <span class="btn ghost sm">보류</span></td></tr><tr style="border-top:1px solid var(--rule);background:#fff"><td style="padding:9px 10px;border-left:4px solid var(--red)"><div class="tag small"><span><i></i><b>sac2</b></span><span><i></i><b>1xxx</b></span><span><i></i><b>P03</b></span><span style="background:var(--red)"><i></i><b>S41</b></span></div></td><td>ZJV0****2</td><td><b class="num" style="font-size:18px;color:var(--red)">0.91</b></td><td class="num" style="font-size:16px">6일</td><td>187 오류가 30일간 증가</td><td style="color:var(--sub)">보류 사유 입력 중</td><td style="text-align:right;padding-right:12px"><span class="btn go sm">승인</span> <span class="btn ghost sm">보류</span></td></tr><tr style="border-top:1px solid var(--rule);"><td style="padding:9px 10px;border-left:4px solid var(--red)"><div class="tag small"><span><i></i><b>sac2</b></span><span><i></i><b>1xxx</b></span><span><i></i><b>P11</b></span><span style="background:var(--red)"><i></i><b>S08</b></span></div></td><td>ZJV0****3</td><td><b class="num" style="font-size:18px;color:var(--red)">0.88</b></td><td class="num" style="font-size:16px">9일</td><td>5 재할당 섹터 증가</td><td style="color:var(--sub)">승인 대기</td><td style="text-align:right;padding-right:12px"><span class="btn go sm">승인</span> <span class="btn ghost sm">보류</span></td></tr><tr style="border-top:1px solid var(--rule);"><td style="padding:9px 10px;border-left:4px solid var(--red)"><div class="tag small"><span><i></i><b>sac2</b></span><span><i></i><b>1xxx</b></span><span><i></i><b>P16</b></span><span style="background:var(--red)"><i></i><b>S52</b></span></div></td><td>ZJV0****4</td><td><b class="num" style="font-size:18px;color:var(--red)">0.87</b></td><td class="num" style="font-size:16px">12일</td><td>197 대기 섹터 증가</td><td style="color:var(--sub)">승인 대기</td><td style="text-align:right;padding-right:12px"><span class="btn go sm">승인</span> <span class="btn ghost sm">보류</span></td></tr><tr style="border-top:1px solid var(--rule);"><td style="padding:9px 10px;border-left:4px solid var(--amber)"><div class="tag small"><span><i></i><b>phx1</b></span><span><i></i><b>1yyy</b></span><span><i></i><b>P05</b></span><span style="background:var(--amber)"><i></i><b>S22</b></span></div></td><td>ZJV0****5</td><td><b class="num" style="font-size:18px;color:var(--amber)">0.71</b></td><td class="num" style="font-size:16px">21일</td><td>187 오류 증가</td><td style="color:var(--sub)">승인 대기</td><td style="text-align:right;padding-right:12px"><span class="btn go sm">승인</span> <span class="btn ghost sm">보류</span></td></tr><tr style="border-top:1px solid var(--rule);"><td style="padding:9px 10px;border-left:4px solid var(--amber)"><div class="tag small"><span><i></i><b>iad1</b></span><span><i></i><b>1zzz</b></span><span><i></i><b>P00</b></span><span style="background:var(--amber)"><i></i><b>S30</b></span></div></td><td>ZJV0****6</td><td><b class="num" style="font-size:18px;color:var(--amber)">0.66</b></td><td class="num" style="font-size:16px">27일</td><td>5 재할당 섹터 증가</td><td style="color:var(--sub)">승인 대기</td><td style="text-align:right;padding-right:12px"><span class="btn go sm">승인</span> <span class="btn ghost sm">보류</span></td></tr></table></div>
+<div class="panel" style="position:absolute;right:26px;bottom:40px;width:350px;padding:16px 18px;border:2px solid var(--ink)">
+ <b>보류 사유를 적어 주세요</b><div style="font-size:12.5px;color:var(--sub);margin:2px 0 8px">ZJV0****2, sac2 / 1xxx / P03 / S41</div>
+ <div class="chip" style="height:54px;color:#8C95A1">예: 다음 정기 점검 때 같은 Pod의 S17과 함께 교체</div>
+ <div style="text-align:right;margin-top:10px"><span class="btn ghost sm">취소</span> <span class="btn go sm">보류 저장</span></div>
+</div><div class="foot">위험 = 30일 고장 위험 상위 1%, 주의 = 상위 1~5% (팀 기준, 확정 전) / 승인하면 승인자와 시각이 기록됩니다</div></main></body></html>

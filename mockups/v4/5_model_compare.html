@@ -1,0 +1,67 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap"><style>
+:root{--bg:#0C1322;--pn:#121B2D;--pn2:#172238;--ln:#22304A;--ink:#E6ECF6;--sub:#8E9BB4;--mute:#5E6C87;
+--blue:#3D8BFF;--cyan:#4CC9F0;--red:#FF4D5E;--amb:#FFB020;--grn:#2BD47D;--bp:#7FA3D6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;background:var(--bg);color:var(--ink);font-family:'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif;
+font-size:14px;overflow:hidden;display:flex;flex-direction:column}
+.num{font-family:Rajdhani,'Pretendard Variable',sans-serif;font-variant-numeric:tabular-nums}
+.top{height:58px;display:flex;align-items:center;padding:0 24px;background:#0F182A;border-bottom:1px solid var(--ln);gap:28px;flex:none}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px;letter-spacing:-.2px}
+.logo i{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#3D8BFF,#4CC9F0);display:flex;align-items:center;justify-content:center}
+.tabs{display:flex;height:100%}
+.tab{display:flex;align-items:center;padding:0 18px;color:var(--sub);font-size:14.5px;border-bottom:2px solid transparent}
+.tab.on{color:#fff;font-weight:600;border-bottom-color:var(--blue);background:linear-gradient(0deg,rgba(61,139,255,.12),transparent)}
+.right{margin-left:auto;display:flex;align-items:center;gap:18px}
+.date{display:flex;align-items:baseline;gap:8px;color:var(--sub);font-size:12.5px}
+.date b{font-size:22px;color:#fff;font-weight:600;letter-spacing:.5px}
+.user{display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border:1px solid var(--ln);border-radius:20px;font-size:13px}
+.user span{width:26px;height:26px;border-radius:50%;background:#26365A;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+main{flex:1;padding:18px 24px 0;display:flex;flex-direction:column;gap:14px;min-height:0;position:relative}
+.foot{height:30px;display:flex;align-items:center;padding:0 24px;color:var(--mute);font-size:12px;border-top:1px solid var(--ln);flex:none;background:#0F182A}
+.card{background:var(--pn);border:1px solid var(--ln);border-radius:10px}
+.ch{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--ln)}
+.ch b{font-size:14.5px}.ch small{color:var(--sub);font-size:12px}
+.pill{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:5px;font-size:12px;font-weight:600;
+background:rgba(142,155,180,.12);color:#B4C0D6}
+.pill.r{background:rgba(255,77,94,.15);color:#FF7D8A}.pill.a{background:rgba(255,176,32,.15);color:#FFC452}
+.pill.b{background:rgba(61,139,255,.16);color:#86B6FF}
+.btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px;border-radius:7px;font-weight:600;font-size:13px;
+border:1px solid var(--ln);background:var(--pn2);color:var(--ink)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.sm{height:27px;padding:0 10px;font-size:12.5px}
+.kpi{flex:1;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.kpi .v{font-size:42px;font-weight:700;line-height:1}
+.kpi .l{font-size:13px;color:var(--sub)}.kpi .l b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:3px}
+.loc{display:inline-flex;align-items:center;gap:5px;font-size:12.5px}
+.loc span{padding:2px 7px;border-radius:5px;background:var(--pn2);border:1px solid var(--ln);color:#C9D3E5}
+.loc span.k{background:rgba(255,77,94,.15);border-color:rgba(255,77,94,.35);color:#FF8B96;font-weight:600}
+.seg{display:flex;gap:2px}.seg i{flex:1;border-radius:1.5px;background:#23314B}
+table{border-collapse:collapse;width:100%}
+th{text-align:left;font-weight:500;font-size:12.5px;color:var(--sub);padding:10px 14px;border-bottom:1px solid var(--ln);background:#101929}
+td{padding:11px 14px;border-bottom:1px solid var(--ln);font-size:13.5px}
+</style></head><body>
+<div class="top"><div class="logo"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/></svg></i>디스크 수명 관리</div><div class="tabs"><div class="tab">대시보드</div><div class="tab">디스크 상세</div><div class="tab">교체 목록</div><div class="tab on">모델 비교</div></div>
+ <div class="right"><div class="date">기준일<b class="num">2026.06.30</b></div><div class="user"><span>운</span>운영 담당자</div></div></div>
+<main>
+<div style="display:flex;align-items:center"><div><div style="font-size:22px;font-weight:700">모델 비교</div>
+ <div style="color:var(--sub);font-size:13px;margin-top:2px">같은 시험 기간, 같은 수의 고장을 잡는다고 할 때</div></div>
+ <span class="pill" style="margin-left:auto">결과 나오면 채움</span></div>
+<div style="display:flex;gap:14px;flex:1;min-height:0;margin-bottom:14px">
+ <div style="width:500px;display:flex;flex-direction:column;gap:14px">
+  <div class="card" style="overflow:hidden"><table>
+   <tr><th>방식</th><th>경보 정밀도</th><th>AP</th><th>잡은 고장</th></tr>
+   <tr><td><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#5E6C87;margin-right:8px"></i>SMART 규칙 (기준)</td><td>--%</td><td>--</td><td>-- / --</td></tr>
+   <tr><td><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#3D8BFF;margin-right:8px"></i><b>머신러닝 모델</b></td><td>--%</td><td>--</td><td>-- / --</td></tr>
+   <tr><td style="border:none"><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#4CC9F0;margin-right:8px"></i><b>딥러닝 모델</b></td><td style="border:none">--%</td><td style="border:none">--</td><td style="border:none">-- / --</td></tr>
+  </table></div>
+  <div class="card" style="padding:16px">
+   <b>디스크 1개 가격</b><div style="font-size:12.5px;color:var(--sub);margin:3px 0 10px">바꾸면 절감액을 다시 계산합니다</div>
+   <div style="display:flex;gap:8px"><div style="flex:1;height:34px;border:1px solid var(--ln);background:var(--pn2);border-radius:7px;display:flex;align-items:center;padding:0 12px">
+    <span class="num" style="font-size:17px;font-weight:600">364,550</span><span style="margin-left:auto;color:var(--sub)">원</span></div><span class="btn pri">다시 계산</span></div>
+  </div>
+ </div>
+ <div class="card" style="flex:1;display:flex;flex-direction:column">
+  <div class="ch"><b>1년 동안 바꿔야 하는 디스크 수</b><small>실험 결과가 나오면 막대 높이와 절감액을 채웁니다</small></div>
+  <div style="display:flex;flex:1;align-items:flex-end;padding:0 30px 22px"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px"><span class="pill">--개 · --원</span><div style="width:100px;height:330px;border-radius:6px 6px 2px 2px;border:1.5px dashed #5E6C87;background:repeating-linear-gradient(135deg,rgba(94,108,135,.18) 0 8px,transparent 8px 16px)"></div><b style="font-size:13.5px">SMART 규칙</b></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px"><span class="pill">--개 · --원</span><div style="width:100px;height:330px;border-radius:6px 6px 2px 2px;border:1.5px dashed #3D8BFF;background:repeating-linear-gradient(135deg,rgba(61,139,255,.18) 0 8px,transparent 8px 16px)"></div><b style="font-size:13.5px">머신러닝 모델</b></div><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px"><span class="pill">--개 · --원</span><div style="width:100px;height:330px;border-radius:6px 6px 2px 2px;border:1.5px dashed #4CC9F0;background:repeating-linear-gradient(135deg,rgba(76,201,240,.16) 0 8px,transparent 8px 16px)"></div><b style="font-size:13.5px">딥러닝 모델</b></div></div>
+ </div>
+</div></main><div class="foot">목업 화면 · 성능 수치는 모델 확정 후 채움 · 모델 종류도 확정 전이라 머신러닝·딥러닝 모델로 표시</div></body></html>

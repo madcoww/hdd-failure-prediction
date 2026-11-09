@@ -1,0 +1,20 @@
+# 대용량 데이터 (GitHub 파일당 100MB 제한) — 원본은 Backblaze에서 내려받기
+data/backblaze/merged/
+data/backblaze/raw/
+data/backblaze/fleet_slim/
+data/backblaze/st12000nm0008/
+*.zip
+
+# 실행 파일 (pip install duckdb 로 대체)
+tools/
+
+# 개인 실습 폴더 (타인 노트북 포함)
+data/backblaze/practice/
+practice/
+
+# 수업 양식·예시 (저작권: 교육기관)
+docs/양식/
+
+# 기타
+.ipynb_checkpoints/
+__pycache__/
