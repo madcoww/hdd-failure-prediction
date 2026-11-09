@@ -7,6 +7,11 @@
 
 > 포스코K뉴딜 데이터분석 3기 최종 프로젝트
 
+## 체험해 보기
+**클릭형 프로토타입: https://madcoww.github.io/hdd-failure-prediction/**
+
+PC와 휴대폰에서 같은 주소로 열린다. 대시보드에서 위험 디스크 선택 → 디스크 상세에서 SMART 추이 · 위험 근거 확인 → 교체 목록에서 승인 또는 보류 → '교체 예정' · '보류' 상태 확인. 예시 데이터이고, 오른쪽 위 **초기화**로 처음부터 다시 할 수 있다. 소스는 [`prototype/`](prototype/).
+
 ## 데이터
 - **출처**: [Backblaze Drive Stats](https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data). 실제 데이터센터에서 측정한 일별 SMART 기록
 - **범위**: 2024 Q2 ~ 2026 Q2 (821일)
@@ -30,7 +35,8 @@ GitHub에서는 노트북의 Plotly 그림이 보이지 않아 PNG로 함께 올
 | `data/` | 데이터와 데이터 설명 | 설명·집계표만 |
 | `eda/` | 탐색적 분석: 추출 스크립트, 보고서, 그림 (데이터는 `data/`에 저장) | O |
 | `docs/` | 기획 산출물: 기능정의서, Journey Map, 화면설계서 | 팀 작성본만 |
-| `mockups/` | 웹 화면 시안 v1~v4 | O |
+| `mockups/` | 웹 화면 시안 v1~v4, 모바일 시안 | O |
+| `prototype/` | 클릭형 프로토타입 (GitHub Pages로 공개) | O |
 | `practice/` | 초기 실험 노트북 | X |
 | `tools/` | 로컬 실행 도구 (DuckDB) | X |
 
@@ -79,6 +85,11 @@ hdd-failure-prediction/
 │       ├─ 5_model_compare        모델 비교 (방식별 성능·절감액)
 │       └─ journey_map*.png       Journey Map 이미지
 │
+├─ prototype/                     ── 클릭형 프로토타입 (gh-pages 브랜치로 배포)
+│   ├─ index.html                 시작 화면 (PC · 모바일 같은 주소)
+│   ├─ css/ · js/ · assets/       스타일, 예시 데이터와 화면 동작, 아이콘
+│   └─ README.md                  체험 흐름 · 실행 방법
+│
 ├─ practice/ *                    초기 실험 노트북
 └─ tools/duckdb/ *                DuckDB 실행 파일 (pip install duckdb 로 대체 가능)
 ```
@@ -98,6 +109,7 @@ hdd-failure-prediction/
 ## 진행 상황
 - [x] 주제·데이터 선정, EDA
 - [ ] 모델링: 규칙 기준선 → 로지스틱 회귀 → LightGBM → GRU. 절감 금액으로 비교
+- [x] 클릭형 프로토타입 (예시 데이터)
 - [ ] 웹 알림 화면
 
 ## 라이선스
