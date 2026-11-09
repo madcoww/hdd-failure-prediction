@@ -1,5 +1,7 @@
 # 클릭형 프로토타입
 
+**주소: https://madcoww.github.io/hdd-failure-prediction/**
+
 발표 QR로 여는 체험용 화면이다. HTML · CSS · JavaScript와 예시 데이터만 쓴다. 서버와 실제 모델은 없다.
 
 ## 체험 흐름
