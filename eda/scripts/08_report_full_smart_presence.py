@@ -38,7 +38,7 @@ lines.extend(['',f'전체 20종에서 기록값이 있는 공통 컬럼은 **{le
               '- ‘모델별 최소 행 기록률’은 20종 각각의 비결측 행 비율 중 최솟값이다. 미기록 날짜의 행도 분모에 포함한다.',
               '- 기본 정보 컬럼은 SMART 표와 별개다. 이 표는 SMART raw 컬럼만 대상으로 한다.',
               '- 같은 이름의 컬럼이 있다는 사실과 의미·단위가 호환되거나 고장 예측에 유용하다는 것은 별개다.',
-              '- 기존 eda_v2_87%.ipynb의 18일 그림은 이 실행으로 변경하지 않았다. 그 그림은 표본 결과이며, 전수 결과는 이 폴더의 별도 CSV가 근거다.', '',
+              '- 기존 eda_v3_87%.ipynb의 18일 그림은 이 실행으로 변경하지 않았다. 그 그림은 표본 결과이며, 전수 결과는 이 폴더의 별도 CSV가 근거다.', '',
               '재현: `scripts/07_full_smart_presence.py` → `scripts/08_report_full_smart_presence.py`. 일별 결과·스키마와 전체 검사 날짜는 이 폴더에 보존한다.'])
 (OUT/'README.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
 print('\n'.join(lines[:len(common)+12]))

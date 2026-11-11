@@ -14,7 +14,7 @@ clock=pd.read_csv(AUDIT/'power_on_time_behavior.csv')
 manifest=json.loads((AUDIT/'audit_manifest.json').read_text(encoding='utf-8'))
 assert len(matrix)==260 and manifest['original_schema_days_checked']==821
 held={1,3,7,10,192}
-summary['판정']=summary['컬럼'].map(lambda c:'기본 입력 보류' if int(c.split('_')[1]) in held else '조건부 공통 후보')
+summary['입력후보판정']=summary['컬럼'].map(lambda c:'기본 입력 보류' if int(c.split('_')[1]) in held else '조건부 공통 후보')
 summary.to_csv(AUDIT/'column_policy_summary.csv',index=False,encoding='utf-8-sig')
 refs={
  'Seagate SMART 공식 설명':'https://github.com/Seagate/openSeaChest/wiki/Drive-Health-and-SMART',
@@ -48,9 +48,9 @@ header='''### 2-2. 공통 SMART 13개 — 정의·단위 선행 검토
 # Fix the explicitly unknown firmware impact phrasing, preserving uncertainty.
 header=header.replace('해당 오류의 영향 여부를 알 수 있으므로','해당 오류의 영향 여부를 알 수 없으므로')
 report=['# SMART 정의·단위 선행 검토 — HDD 20종 × 13개','',header.replace('### 2-2. 공통 SMART 13개 — 정의·단위 선행 검토','## 검토 결론'),'',
-        '| 컬럼 | 의미 | 해석·단위 | 판정 |','|---|---|---|---|']
+        '| 컬럼 | 의미 | 해석·단위 | 입력후보판정 |','|---|---|---|---|']
 for r in summary.to_dict('records'):
-    report.append(f"| `{r['컬럼']}` | {r['지표']} | {r['해석']} | {r['판정']} |")
+    report.append(f"| `{r['컬럼']}` | {r['지표']} | {r['해석']} | {r['입력후보판정']} |")
 report.extend(['','## 원문 자료',*[f'- [{name}]({url})' for name,url in refs.items()], '',
               '## 파일', '- `model_column_audit.csv`: 20종 × 13개 검토·처리 방침·근거·확인 한계',
               '- `model_family_matches.csv`: 정확한 모델명 매칭 / 제품군 추정 / 미일치 구분',
@@ -61,7 +61,7 @@ report.extend(['','## 원문 자료',*[f'- [{name}]({url})' for name,url in refs
               '단위·의미 검토만 수행했다. raw 값을 변환하거나 새로운 예측 모델을 학습하지 않았다.'])
 (AUDIT/'README.md').write_text('\n'.join(report)+'\n',encoding='utf-8')
 
-path=EDA/'eda_v2_87%.ipynb'
+path=EDA/'eda_v3_87%.ipynb'
 nb=nbf.read(path,as_version=4)
 backup=AUDIT/'eda_v2_before_definition_audit.ipynb'
 if not backup.exists():shutil.copy2(path,backup)
@@ -91,7 +91,7 @@ def execute(source,ident):
 existing=next(c for c in nb.cells if c.cell_type=='code' and "display(pd.DataFrame({'컬럼':cols" in c.source)
 audit_source='''audit_dir=EDA/'analysis/column_definition_audit'
 policy_summary=pd.read_csv(audit_dir/'column_policy_summary.csv')
-display(policy_summary[['컬럼','지표','해석','상수인_모델수','판정']])
+display(policy_summary[['컬럼','지표','해석','상수인_모델수','입력후보판정']])
 display(read('cohort').rename(columns={'disks':'디스크 수','failed_disks':'고장 디스크 수','failure_rows':'고장 표시 행',
     'repeated_failure_disks':'중복 고장 디스크','post_failure_disks':'고장 후 기록 디스크'}))'''
 replacement=execute(audit_source,existing.id)
@@ -107,7 +107,7 @@ current_effects=effect_data[effect_data.feature.isin(cols)].copy()
 effect_summary=current_effects.assign(abs_r=current_effects.rank_biserial.abs()).groupby('feature').abs_r.median().rename('효과크기_중앙값').reset_index()
 decision=pd.read_csv(EDA/'analysis/column_definition_audit/column_policy_summary.csv')
 decision=decision.merge(effect_summary,left_on='컬럼',right_on='feature',how='left').drop(columns='feature')
-display(decision[['컬럼','지표','판정','효과크기_중앙값','처리방침']])'''
+display(decision[['컬럼','지표','입력후보판정','효과크기_중앙값','처리방침']])'''
 replacement=execute(decision_source,decision_cell.id)
 decision_cell.source=replacement.source;decision_cell.outputs=replacement.outputs
 for c in nb.cells:

@@ -16,14 +16,15 @@ PC와 휴대폰에서 같은 주소로 열린다. 대시보드에서 위험 디�
 - **도메인 정리(초안)**: [HDD 고장·SMART 지표·수집 주기·전문가 질문 답변](data/도메인.md)
 - **출처**: [Backblaze Drive Stats](https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data). 실제 데이터센터에서 측정한 일별 SMART 기록
 - **기간**: 2024 Q2 ~ 2026 Q2 (821일)
-- **EDA v2 범위 (최신)**: 고장 수 상위 HDD 20종, 디스크 338,083개, 고장 9,920개. 전체 디스크의 87.4%, 고장의 94.3%
+- **EDA v3 범위 (최신)**: 고장 수 상위 20종 중 Seagate 10종, SMART raw 20개. 디스크 115,901개로 전체 HDD의 **29.95%**, 고장 디스크 4,066개로 전체 고장의 **38.66%**를 포함한다. [EDA v3](eda/eda_v2_30%25.ipynb), [범위 집계](data/backblaze/summary/eda_v3_scope.csv). 파일명의 30%는 HDD 디스크 수 비중을 반올림한 값이다.
+- **EDA v2 범위**: 고장 수 상위 HDD 20종, 디스크 338,083개, 고장 9,920개. 전체 디스크의 87.4%, 고장의 94.3%
   - SMART 열: 20종 모두 기록하는 공통 raw 13개 (1, 3, 4, 5, 7, 9, 10, 12, 192, 193, 194, 198, 199)
 - **EDA v1 범위**: Seagate `ST12000NM0008` 1종. 디스크 19,516개, 고장 1,117건. [EDA v1](eda/eda_v1_5%25.ipynb): SSD 제외 후 분석 목적 → 데이터 개요 → 품질 → 기록 간격·관측 기간 → 고장 현황 → 고장 전 변화 → 변수 관계 → 결론(초안). pandas로 분석하고 matplotlib·seaborn으로 시각화한다. 각 절은 질문·표/그림·관찰 결과·후속 조치 순서다. 그림은 `eda/figures/eda_v1/`에 저장한다. 파일명의 5%는 전체 HDD 디스크 수 대비 비중이며 샘플링 비율이 아니다.
 - 첫 모델링: `ST12000NM0008` 1종으로 4개 머신러닝 모델 비교. [실험 계획](ml/v1/README.md)
 - 원본은 용량이 커서 저장소에 올리지 않았다. 내려받는 방법은 [재현 방법](#재현-방법)을 본다
 
 ## EDA 주요 결과 (v2)
-보고서: [`eda/eda_v2_87%.ipynb`](eda/eda_v2_87%25.ipynb). 월별 기준일마다 "30일 안에 고장" 여부를 붙이고, 같은 모델·같은 날짜의 정상 디스크와 비교했다.
+보고서: [`eda/eda_v3_87%.ipynb`](eda/eda_v3_87%25.ipynb). 월별 기준일마다 "30일 안에 고장" 여부를 붙이고, 같은 모델·같은 날짜의 정상 디스크와 비교했다.
 
 - 고장을 가장 잘 구분하는 지표는 **재할당 섹터(5)**, 그다음이 **오프라인 복구 불가 섹터(198)**. 모델별 효과 크기 중앙값은 각각 0.54, 0.23
 - 고장 디스크의 **29.9%는 손상 지표(5, 198)가 끝까지 0**이었다. 규칙만으로는 놓치는 고장이 있다
@@ -73,7 +74,8 @@ hdd-failure-prediction/
 │   └─ raw/ *                     원본 압축 해제 위치 (원본 zip은 따로 보관)
 │
 ├─ eda/                           ── 탐색적 분석
-│   ├─ eda_v2_87%.ipynb               EDA v2 보고서 (최신, 상위 20종 · 공통 SMART 13개)
+│   ├─ eda_v2_30%.ipynb            EDA v3 보고서 (최신, Seagate 10종 · SMART 20개)
+│   ├─ eda_v3_87%.ipynb               EDA v2 보고서 (상위 20종 · 공통 SMART 13개)
 │   ├─ eda_v1_5%.ipynb                  EDA v1 보고서 (ST12000NM0008 1종)
 │   ├─ scripts/                   번호 순서대로 실행
 │   │   ├─ 01_fleet_slim.py       전 모델(97종)에서 가벼운 열만 분기별로 추출
@@ -150,7 +152,7 @@ hdd-failure-prediction/
    python eda/scripts/09_extract_top20_common13.py
    python eda/scripts/10_analyze_top20_common13.py
    ```
-   그다음 `eda/eda_v2_87%.ipynb`를 실행한다
+   그다음 `eda/eda_v3_87%.ipynb`를 실행한다
 5. **EDA v1**: `python eda/scripts/03_extract_model.py ST12000NM0008` 후 `eda/eda_v1_5%.ipynb`를 실행한다
 
 ## 진행 상황

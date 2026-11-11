@@ -370,5 +370,5 @@ nb = nbf.v4.new_notebook(cells=cells)
 nb.metadata = {'kernelspec': {'display_name':'Python 3','language':'python','name':'python3'},
                'language_info': {'name':'python','version':'3.14.6'}}
 nbf.validate(nb)
-nbf.write(nb, EDA/'eda_v2_87%.ipynb')
-print(f'Created eda_v2_87%.ipynb: {len(cells)} cells')
+nbf.write(nb, EDA/'eda_v3_87%.ipynb')
+print(f'Created eda_v3_87%.ipynb: {len(cells)} cells')

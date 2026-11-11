@@ -7,7 +7,7 @@ from IPython.utils.capture import capture_output
 
 eda=Path(__file__).resolve().parents[2]
 os.chdir(eda)
-path=eda/'eda_v2_87%.ipynb'
+path=eda/'eda_v3_87%.ipynb'
 nb=nbf.read(path,as_version=4)
 assert not any(c.id=='v2-scope-comparison' for c in nb.cells)
 shell=InteractiveShell.instance()

@@ -5,7 +5,7 @@ from IPython.core.interactiveshell import InteractiveShell
 from IPython.utils.capture import capture_output
 
 eda=Path(__file__).resolve().parents[1]
-p=eda/'eda_v2_87%.ipynb'
+p=eda/'eda_v3_87%.ipynb'
 nb=nbf.read(p,as_version=4)
 assert not any(c.id=='detailed-growth-interpretation' for c in nb.cells)
 shell=InteractiveShell.instance()

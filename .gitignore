@@ -27,3 +27,6 @@ data/backblaze/top20_common13/
 .claude/
 AGENTS.md
 CLAUDE.md
+
+# Seagate 10종 일별 추출 (eda v3)
+data/backblaze/seagate10/

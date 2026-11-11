@@ -8,7 +8,7 @@ from IPython.utils.capture import capture_output
 
 eda = Path(__file__).resolve().parents[2]
 os.chdir(eda)
-notebook_path = eda / 'eda_v2_87%.ipynb'
+notebook_path = eda / 'eda_v3_87%.ipynb'
 nb = nbf.read(notebook_path, as_version=4)
 shell = InteractiveShell.instance()
 count = 0

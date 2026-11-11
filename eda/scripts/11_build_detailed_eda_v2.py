@@ -7,7 +7,7 @@ EDA=Path(__file__).resolve().parents[1]
 OUT=EDA/'analysis/detailed_v2'
 assert (OUT/'analysis_manifest.json').exists(), 'Run full analysis first'
 backup=EDA/'analysis/v2/eda_v2_before_detailed.ipynb'
-if not backup.exists():shutil.copy2(EDA/'eda_v2_87%.ipynb',backup)
+if not backup.exists():shutil.copy2(EDA/'eda_v3_87%.ipynb',backup)
 cells=[]
 def md(s):cells.append(nbf.v4.new_markdown_cell(s.strip()))
 def code(s):cells.append(nbf.v4.new_code_cell(s.strip()))
@@ -94,7 +94,7 @@ fig.update_layout(title='그림 2-1. 20종으로 디스크 약 87%, 고장 약 9
 show(fig,'2-1_scope',420)
 ''')
 md('### 2-2. 공통 SMART 13개 — 정의·단위 선행 검토\n\n**기록 여부는 821일 전수 확인, 의미·단위는 제조사 자료·해석 코드·실제 값의 동작을 별도로 대조했다.** 20종 × 13개 지표의 검토표(260행)를 만들었다. 이는 260개 모두의 펌웨어별 상세 사양을 제조사가 보증했다는 뜻이 아니다.\n\n이번 검토의 처리 방침은 **조건부 공통 후보 8개 / 통합 기본 입력 보류 5개**다. 아래에서 ‘조건부’란 현재 데이터의 의미와 해석 근거가 비교적 일치하므로 모델 식별자·값 검증을 함께 사용하는 후보라는 뜻이다. 모든 제조사에서 같은 원시값이 같은 고장 위험이나 동일한 바이트 손상을 뜻한다는 뜻은 아니다.\n\n- **가동 시간(9)**: 20종 모두 30일 간 증가량을 일 단위로 나눈 중앙값이 약 **23.93~24.07**이었다. 제품군의 Power On Hours 정의와도 일치해 이 데이터에서는 **시간(h)**으로 해석한다. 감소·리셋 구간은 따로 다룬다.\n- **현재 온도(194)**: 제품군 문서·해석 도구는 섭씨로 정의하며, CSV는 13~112의 단일 수치다. 현재 CSV를 ℃로 사용하는 후보로 두되, 101·112 같은 극단값은 센서·수집 이상 가능성을 별도 검토한다. 원본 패킷을 확보하지 못했으므로 임의로 비트 분해하지 않는다.\n- **읽기/탐색 오류(1·7)**: Seagate 공식 설명과 제품군별 해석 코드에서 복합 필드가 확인된다. raw 정수 전체를 단일 오류 횟수로 쓰거나 `raw>0`을 오류 발생으로 해석하지 않는다.\n- **회전 시작(3)·회전 재시도(10)**: 현재값·평균값·집계 구간 해석을 구분해야 한다. 3은 10종, 10은 19종에서 전 기간 상수였으며 기본 입력은 보류한다.\n- **비상 헤드 회수(192)**: 제조사별 집계 조건이 다르고, ST14000NM0138에는 부정확한 증가를 수정한 공식 펌웨어 공지가 있다. 현재 데이터의 펌웨어 버전이 없어 해당 오류의 영향 여부를 알 수 없으므로 기본 입력을 보류한다.\n\n**확인 한계**: 원본 821개 CSV의 스키마에 펌웨어·수집 도구 버전·섹터 크기 필드가 없다. 현재 도구 DB와 모델명이 정확히 일치한 것은 10종, 접미사 생략으로 제품군을 추정한 것은 9종, DB 규칙을 찾지 못한 것은 1종(ST14000NM0138)이다. 이 1종은 Dell 공지에서 OEM 모델로 확인했다. 제조사 비공개 raw 수식과 Backblaze 내부 변환 코드는 확보하지 못했다.\n\n수집 경로도 구분했다. smartctl은 raw 정수와 사람이 읽는 표시 문자열을 별도로 만들지만, Backblaze는 자체 C++ 수집기→XML→집계 모듈 구조라고 설명한다. **현재 CSV가 최신 smartctl의 `raw.value`를 그대로 저장했다는 가정은 하지 않는다.**\n\n근거: [Seagate 공식 SMART 설명](https://github.com/Seagate/openSeaChest/wiki/Drive-Health-and-SMART), [모델별 도구 해석 규칙](https://github.com/smartmontools/smartmontools/blob/main/drivedb/drivedb.h), [Toshiba 자료](https://www.toshiba-storage.com/wp/wp-content/uploads/2022/07/Toshiba_OpenE_Blogpost_July2022_final.pdf), [Backblaze 수집 구조](https://www.backblaze.com/blog/drive-stats-data-deep-dive-the-architecture/), [Dell 펌웨어 공지](https://www.dell.com/support/home/en-pr/drivers/driversdetails?driverid=v3n1t).\n\n상세 근거는 `analysis/column_definition_audit/model_column_audit.csv`, 제품군 매칭은 `model_family_matches.csv`, 원문·해시는 `source_manifest.json`에 있다. 원본 값과 기존 13개 탐색 통계는 보존하며, 이를 ‘13개 모두 통합 입력 검증 완료’로 해석하지 않는다.\n')
-code("audit_dir=EDA/'analysis/column_definition_audit'\npolicy_summary=pd.read_csv(audit_dir/'column_policy_summary.csv')\ndisplay(policy_summary[['컬럼','지표','해석','상수인_모델수','판정']])\ndisplay(read('cohort').rename(columns={'disks':'디스크 수','failed_disks':'고장 디스크 수','failure_rows':'고장 표시 행',\n    'repeated_failure_disks':'중복 고장 디스크','post_failure_disks':'고장 후 기록 디스크'}))")
+code("audit_dir=EDA/'analysis/column_definition_audit'\npolicy_summary=pd.read_csv(audit_dir/'column_policy_summary.csv')\ndisplay(policy_summary[['컬럼','지표','해석','상수인_모델수','입력후보판정']])\ndisplay(read('cohort').rename(columns={'disks':'디스크 수','failed_disks':'고장 디스크 수','failure_rows':'고장 표시 행',\n    'repeated_failure_disks':'중복 고장 디스크','post_failure_disks':'고장 후 기록 디스크'}))")
 md('''## 3. 전처리·데이터 품질
 
 ### 3-1. 전체 821일 검사와 정제
@@ -305,7 +305,7 @@ md('''### 5-2. 컬럼 후보 결정표
 
 13개를 무조건 모두 입력하는 것이 아니라 실제 결과를 바탕으로 후보의 우선순위를 정한다. 효과 크기는 탐색적 관계이며 최종 선정은 학습 기간 안에서 확인한다.
 ''')
-code("effect_data=read('effects_by_model')\ncurrent_effects=effect_data[effect_data.feature.isin(cols)].copy()\neffect_summary=current_effects.assign(abs_r=current_effects.rank_biserial.abs()).groupby('feature').abs_r.median().rename('효과크기_중앙값').reset_index()\ndecision=pd.read_csv(EDA/'analysis/column_definition_audit/column_policy_summary.csv')\ndecision=decision.merge(effect_summary,left_on='컬럼',right_on='feature',how='left').drop(columns='feature')\ndisplay(decision[['컬럼','지표','판정','효과크기_중앙값','처리방침']])")
+code("effect_data=read('effects_by_model')\ncurrent_effects=effect_data[effect_data.feature.isin(cols)].copy()\neffect_summary=current_effects.assign(abs_r=current_effects.rank_biserial.abs()).groupby('feature').abs_r.median().rename('효과크기_중앙값').reset_index()\ndecision=pd.read_csv(EDA/'analysis/column_definition_audit/column_policy_summary.csv')\ndecision=decision.merge(effect_summary,left_on='컬럼',right_on='feature',how='left').drop(columns='feature')\ndisplay(decision[['컬럼','지표','입력후보판정','효과크기_중앙값','처리방침']])")
 md('''### 5-3. 적용 범위·한계·다음 단계
 
 - 이 결과는 **선택한 20종**의 EDA다. 나머지 55종과 새로운 HDD 모델에 대한 성능은 보장하지 않는다.
@@ -327,5 +327,5 @@ md('''### 5-3. 적용 범위·한계·다음 단계
 중간값·결과 CSV/Parquet은 `analysis/detailed_v2/`에 있으며, 이전 사용자 편집 노트북은 `analysis/v2/eda_v2_before_detailed.ipynb`에 보존한다. 새 세션에서 원본 단계부터 재현하려면 1→2→3→4 순서로 실행한다.
 ''')
 nb=nbf.v4.new_notebook(cells=cells,metadata={'kernelspec':{'display_name':'Python 3','language':'python','name':'python3'},'language_info':{'name':'python','version':'3.14.6'}})
-nbf.validate(nb);nbf.write(nb,EDA/'eda_v2_87%.ipynb')
+nbf.validate(nb);nbf.write(nb,EDA/'eda_v3_87%.ipynb')
 print('Built detailed notebook:',len(cells),'cells',flush=True)
