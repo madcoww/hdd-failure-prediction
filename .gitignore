@@ -18,3 +18,12 @@ docs/양식/
 # 기타
 .ipynb_checkpoints/
 __pycache__/
+
+# 분석 중간 결과 (약 4GB) · v2 일별 추출 데이터 (약 3.6GB)
+eda/analysis/
+data/backblaze/top20_common13/
+
+# 에이전트 설정 (로컬 전용)
+.claude/
+AGENTS.md
+CLAUDE.md

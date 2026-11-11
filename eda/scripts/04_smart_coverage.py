@@ -4,6 +4,7 @@ raw zip 9개에서 15일 간격으로 하루치 CSV를 골라(약 55일) 전체 
 모델별로 smart_*_raw 열의 '값이 있는 행 비율'을 계산한다.
 출력: C:/hdd-failure-prediction/data/backblaze/summary/smart_coverage_top5.csv  (model, column, nonnull_pct, n_days)
 """
+import os
 import sys
 import zipfile
 from pathlib import Path
@@ -14,7 +15,7 @@ import pyarrow.compute as pc
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-RAW = Path("C:/Users/rhkdd/OneDrive/hdd-rul/data/raw")
+RAW = Path(os.environ.get("HDD_RAW_DIR", "C:/Users/rhkdd/OneDrive/hdd-rul/data/raw"))  # 원본 zip 폴더
 OUT = Path("C:/hdd-failure-prediction/data/backblaze/summary/smart_coverage_top5.csv")
 TOP5 = [
     "HGST HUH721212ALN604",

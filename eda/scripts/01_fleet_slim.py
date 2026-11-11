@@ -3,6 +3,7 @@
 CSV를 디스크에 풀지 않고 zip 안에서 바로 읽는다 (전체 해제 시 약 95 GB).
 출력: C:/hdd-failure-prediction/data/backblaze/fleet_slim/YYYY_Qn.parquet
 """
+import os
 import sys
 import time
 import zipfile
@@ -12,7 +13,7 @@ import pyarrow as pa
 import pyarrow.csv as pv
 import pyarrow.parquet as pq
 
-RAW = Path("C:/Users/rhkdd/OneDrive/hdd-rul/data/raw")
+RAW = Path(os.environ.get("HDD_RAW_DIR", "C:/Users/rhkdd/OneDrive/hdd-rul/data/raw"))  # 원본 zip 폴더
 OUT = Path("C:/hdd-failure-prediction/data/backblaze/fleet_slim")
 OUT.mkdir(parents=True, exist_ok=True)
 

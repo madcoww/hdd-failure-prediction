@@ -3,6 +3,7 @@
 사용: python 03_extract_model.py <MODEL>
 출력: C:/hdd-failure-prediction/data/backblaze/<model>/YYYY_Qn.parquet (분기마다 열 구성이 다를 수 있어 분기별 저장)
 """
+import os
 import sys
 import time
 import zipfile
@@ -13,7 +14,7 @@ import pyarrow.compute as pc
 import pyarrow.csv as pv
 import pyarrow.parquet as pq
 
-RAW = Path("C:/Users/rhkdd/OneDrive/hdd-rul/data/raw")
+RAW = Path(os.environ.get("HDD_RAW_DIR", "C:/Users/rhkdd/OneDrive/hdd-rul/data/raw"))  # 원본 zip 폴더
 META = ["date", "serial_number", "model", "capacity_bytes", "failure",
         "datacenter", "cluster_id", "vault_id", "pod_id", "pod_slot_num", "is_legacy_format"]
 
